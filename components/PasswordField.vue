@@ -54,7 +54,7 @@ const {
     />
     <div
       @click="switchVisibility"
-      class="absolute top-[16px] right-[17.8px] w-[21px] h-[17px] cursor-pointer"
+      class="absolute flex items-center top-[18px] right-[18px] max-w-[18px] max-h-[16px] w-full h-full cursor-pointer"
     >
       <img v-if="toggle" src="../assets/logos/eye.svg" alt="hidden" />
       <img v-if="!toggle" src="../assets\logos\closeeye.svg" alt="showing" />

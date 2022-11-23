@@ -10,6 +10,7 @@ const schema = Yup.object().shape({
 </script>
 
 <template>
+  <Notify v-if="showNotification" message="Signed Up Successfully" />
   <!-- Left hand side informatin -->
   <section
     class="h-screen grid lg:grid lg:grid-cols-[minmax(auto,526px)_auto] p-4 lg:p-0"
@@ -116,6 +117,11 @@ const schema = Yup.object().shape({
 
 <script>
 export default {
+  data() {
+    return {
+      showNotification: false,
+    };
+  },
   methods: {
     async handleSignup(value) {
       const { fname, lname, mobile, email, password } = value;
@@ -138,7 +144,7 @@ export default {
       result = await result.json();
       if (result.auth) {
         localStorage.setItem("token", JSON.stringify(result.auth));
-        alert("Signup Successfully");
+        this.showNotification = true;
       }
     },
   },

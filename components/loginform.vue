@@ -33,28 +33,12 @@ const schema = Yup.object().shape({
 </script>
 
 <template>
-  <div
-    v-if="loginSuccess"
-    class="bg-white absolute max-h-[64px] top-0 right-0 p-4 m-4 flex gap-3 items-center border-l-4 border-[#039855] rounded-md shadow-md z-20"
-  >
-    <img
-      src="../assets/logos/circlecheck.svg"
-      alt="SuccessFully login"
-      class="max-w-[20px] max-h-[20px] z-0"
-    />
-    <h2 class="text-sm">You Signed In successfully</h2>
-    <img
-      src="../assets/logos/v1cross.svg"
-      alt="close logo"
-      class="cursor-pointer"
-      @click="loginNotification"
-    />
-  </div>
+  <Notify v-if="showNotification" message="Signed In Successfully" />
   <section
-    class="lg:w-[384px] lg:max-h-[294px] flex flex-col justify-around h-full w-full lg:h-auto"
+    class="flex flex-col justify-around h-full w-full lg:w-[384px] lg:max-h-[294px] lg:h-auto"
   >
     <Form
-      class="flex flex-col justify-between h-full my-8 w-auto"
+      class="flex flex-col justify-between h-full w-auto"
       @submit="handleSignIn"
       :validation-schema="schema"
     >
@@ -108,15 +92,7 @@ const schema = Yup.object().shape({
         type="submit"
         class="w-full font-semibold text-lg py-[11px] rounded bg-[#F1C12B]"
       >
-        <h1 v-if="!loginSuccess">Sign in</h1>
-        <h2 v-else class="flex items-center justify-center gap-4">
-          Signed In
-          <img
-            src="../assets/logos/circlecheck.svg"
-            alt="SuccessFully login"
-            class="max-w-[20px] max-h-[20px]"
-          />
-        </h2>
+        Sign in
       </button>
     </Form>
   </section>
@@ -126,7 +102,7 @@ const schema = Yup.object().shape({
 export default {
   data() {
     return {
-      loginSuccess: false,
+      showNotification: false,
       invalidInput: false,
       invalidPassword: false,
       error: "",
@@ -142,9 +118,6 @@ export default {
       this.passwordFieldType =
         this.passwordFieldType === "password" ? "text" : "password";
       this.toggle = this.toggle === false ? true : false;
-    },
-    loginNotification() {
-      this.loginSuccess = !this.loginSuccess;
     },
     async handleSignIn(value) {
       const { email_or_phone, password } = value;
@@ -178,7 +151,7 @@ export default {
         } else {
           this.invalidInput = false;
           this.invalidPassword = false;
-          this.loginNotification();
+          this.showNotification = true;
         }
         return result;
       } catch (err) {
