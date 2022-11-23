@@ -7,7 +7,7 @@
       <Info />
     </section>
     <!-- Right hand side Forms  -->
-    <section class="flex flex-col items-center justify-around mb-4">
+    <section class="flex flex-col items-center justify-around mb-3">
       <Loginform />
     </section>
   </section>

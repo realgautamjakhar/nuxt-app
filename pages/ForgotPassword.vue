@@ -33,18 +33,18 @@ const schema = Yup.object().shape({
 
   <!-- Left hand side informatin -->
   <section
-    class="h-screen grid p-4 lg:grid lg:grid-cols-[minmax(auto,526px)_auto] lg:p-0"
+    class="h-screen grid p-5 lg:grid lg:grid-cols-[minmax(auto,526px)_auto] lg:p-0"
   >
     <section class="bg-[#404555] hidden grid-rows-[auto_300px] w-auto lg:grid">
       <Info />
     </section>
     <!-- Right hand side Forms  -->
-    <section class="flex flex-col items-center justify-around">
+    <section class="flex flex-col items-center justify-around mb-3">
       <section
         class="lg:w-[384px] lg:max-h-[294] flex flex-col justify-around h-full w-full lg:h-auto"
       >
         <Form
-          class="flex flex-col justify-between h-full my-8 w-auto"
+          class="flex flex-col justify-between h-full w-auto"
           @submit="findMailId"
           :validation-schema="schema"
         >
