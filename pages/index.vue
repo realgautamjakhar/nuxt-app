@@ -4,14 +4,6 @@
 :root {
   font-family: "Poppins", sans-serif;
 }
-
-:root {
-  --primary-color: #0071fe;
-  --error-color: #f23648;
-  --error-bg-color: #fddfe2;
-  --success-color: #21a67a;
-  --success-bg-color: #e0eee4;
-}
 </style>
 
 <template>

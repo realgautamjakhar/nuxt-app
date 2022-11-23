@@ -11,7 +11,7 @@
     <!-- Right hand side Forms  -->
 
     <section class="flex flex-col items-center justify-around">
-      <Resetpassword />
+      <ResetPass />
     </section>
   </section>
 </template>

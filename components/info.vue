@@ -1,9 +1,11 @@
 <template>
-  <img
-    src="../assets/logos/logo.svg"
-    class="max-w-[217px] max-h-[157px] w-[100%] m-auto"
-    alt="wisdom circle logo"
-  />
+  <NuxtLink class="max-w-[217px] max-h-[157px] w-[100%] m-auto" to="/">
+    <img
+      src="../assets/logos/logo.svg"
+      class="max-w-[217px] max-h-[157px] w-[100%] m-auto"
+      alt="wisdom circle logo"
+    />
+  </NuxtLink>
   <section class="text-white flex">
     <img
       src="../assets/logos/pose.svg"

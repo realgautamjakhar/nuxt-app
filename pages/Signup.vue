@@ -120,7 +120,7 @@ export default {
     async handleSignup(value) {
       const { fname, lname, mobile, email, password } = value;
       let result = await fetch(
-        "https://nuxt-project-api.herokuapp.com/register",
+        "https://project-api-01.herokuapp.com/user/register",
         {
           method: "post",
           body: JSON.stringify({

@@ -113,7 +113,7 @@ export default {
       const { email } = value;
       console.log(email);
       let response = await fetch(
-        "https://nuxt-project-api.herokuapp.com/findMailId",
+        "https://project-api-01.herokuapp.com/user/findMailId",
         {
           method: "post",
           body: JSON.stringify({

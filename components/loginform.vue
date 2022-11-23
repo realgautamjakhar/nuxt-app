@@ -146,7 +146,7 @@ export default {
       console.log(email_or_phone, password);
       try {
         let result = await fetch(
-          "https://nuxt-project-api.herokuapp.com/login",
+          "https://project-api-01.herokuapp.com/user/login",
           {
             method: "post",
             body: JSON.stringify({
