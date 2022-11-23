@@ -3,43 +3,23 @@ import { Form } from "vee-validate";
 import * as Yup from "yup";
 
 const schema = Yup.object().shape({
-  email: Yup.string().required().email("Please Enter a valid Email"),
+  email: Yup.string()
+    .required("This field is required")
+    .email("Please enter a valid email address"),
 });
 </script>
 
 <template>
-  <!-- Modal  -->
-  <section
-    v-if="modalToggle"
-    class="z-10 fixed w-full h-full flex justify-center items-center bg-[rgba(0,0,0,0.3)]"
-  >
-    <div class="bg-[white] max-w-[486px] h-[170px] m-2 p-5 border-2 rounded-lg">
-      <div class="flex justify-between mb-4">
-        <h2 class="font-bold text-2xl mb-1 text-[#121317]">Reset Password</h2>
-        <img
-          src="../assets/logos/cross.svg"
-          alt=""
-          class="max-w-[32px] max-h-[32px] cursor-pointer"
-          @click="closeToggleModal"
-        />
-      </div>
-      <hr />
-      <p class="mt-4 text-[#404555]">
-        Thank you! We have send you a link to reset your account password.Please
-        check your email
-      </p>
-    </div>
-  </section>
-
+  <Modal v-if="modalToggle" />
   <!-- Left hand side informatin -->
   <section
     class="h-screen grid p-5 lg:grid lg:grid-cols-[minmax(auto,526px)_auto] lg:p-0"
   >
     <section class="bg-[#404555] hidden grid-rows-[auto_300px] w-auto lg:grid">
-      <Info />
+      <CompanyInfo />
     </section>
-    <!-- Right hand side Forms  -->
-    <section class="flex flex-col items-center justify-around mb-3">
+    <!-- Forget Password Screen  -->
+    <section class="flex flex-col items-center justify-around mb-3 mt-5">
       <section
         class="lg:w-[384px] lg:max-h-[294] flex flex-col justify-around h-full w-full lg:h-auto"
       >
@@ -60,11 +40,11 @@ const schema = Yup.object().shape({
               We’ll send you a reset password link to your registered email
               address
             </p>
-            <InputCustom
+            <InputCustomField
               name="email"
               type="text"
               label="email"
-              placeholder="Email Address"
+              placeholder="Registered Email"
             />
             <p
               v-if="invalidMail"
@@ -83,7 +63,7 @@ const schema = Yup.object().shape({
             <NuxtLink to="/">
               <button
                 type="submit"
-                class="w-full font-semibold text-lg py-[11px] border-2 border-[#A9871E] bg[#FEFCF4] rounded"
+                class="w-full font-semibold text-lg py-[11px] border-2 border-[#A9871E] bg-[#FEFCF4] rounded"
               >
                 Return to sign In
               </button>
@@ -109,15 +89,13 @@ export default {
       this.modalToggle = false;
     },
     async findMailId(value) {
-      console.log(value);
       const { email } = value;
-      console.log(email);
       let response = await fetch(
         "https://project-api-01.herokuapp.com/user/findMailId",
         {
           method: "post",
           body: JSON.stringify({
-            email,
+            email: email.toLowerCase(),
           }),
           headers: {
             "Content-Type": "application/json",

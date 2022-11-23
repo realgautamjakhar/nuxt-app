@@ -10,7 +10,7 @@ const props = defineProps({
 <template>
   <div
     v-if="toggle"
-    class="bg-white absolute max-h-[64px] top-0 right-0 p-4 m-4 flex gap-3 items-center border-l-4 border-[#039855] rounded-md shadow-md z-20"
+    class="bg-white absolute max-h-[64px] top-0 right-0 p-4 m-4 flex gap-3 items-center border-l-4 border-[#039855] rounded-md shadow-md z-10"
   >
     <img
       src="../assets/logos/circlecheck.svg"

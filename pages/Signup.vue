@@ -11,15 +11,14 @@ const schema = Yup.object().shape({
 
 <template>
   <Notify v-if="showNotification" message="Signed Up Successfully" />
-  <!-- Left hand side informatin -->
   <section
     class="h-screen grid lg:grid lg:grid-cols-[minmax(auto,526px)_auto] p-5 lg:p-0"
   >
     <section class="bg-[#404555] grid-rows-[auto_300px] w-auto hidden lg:grid">
-      <Info />
+      <CompanyInfo />
     </section>
-    <!-- Right hand side Forms  -->
-    <section class="flex flex-col items-center justify-around mb-3">
+    <!-- SignUp Screen  -->
+    <section class="flex flex-col items-center justify-around mb-3 mt-5">
       <section
         class="lg:w-[384px] flex flex-col justify-around h-full lg:h-auto"
       >
@@ -42,27 +41,30 @@ const schema = Yup.object().shape({
                 >Sign In</NuxtLink
               >
             </p>
-            <InputCustom
+            <InputCustomField
               name="fname"
               type="text"
               label="fname"
               placeholder="First Name"
             />
-            <InputCustom
+            <InputCustomField
               name="lname"
               type="text"
               label="lname"
               placeholder="Last Name"
               class="mt-4"
             />
-            <InputCustom
+            <InputCustomField
               name="email"
               type="text"
               label="email"
               placeholder="Email Address"
               class="mt-4"
             />
-            <div class="grid grid-cols-[88px_auto] gap-2 items-center mt-4">
+            <div
+              class="grid grid-cols-[88px_auto] gap-2 items-center mt-4"
+              title="Functionality Not Implemented"
+            >
               <div
                 class="border-[#DCDEE5] border-2 flex items-center justify-between h-full py-3 px-4 text-[16px] w-full rounded text-center"
               >
@@ -77,14 +79,14 @@ const schema = Yup.object().shape({
                   alt="indianFlag"
                 />
               </div>
-              <InputCustom
+              <InputCustomField
                 name="mobile"
                 type="number"
                 label="mobile"
                 placeholder="Mobile Number"
               />
             </div>
-            <PasswordField
+            <PasswordCustomField
               name="password"
               label="Password"
               placeholder="Password"
@@ -104,7 +106,7 @@ const schema = Yup.object().shape({
           <div>
             <button
               type="submit"
-              class="w-full bg-[#F1C12B] font-semibold text-[#121317] text-lg py-[11px] mb-4 rounded"
+              class="w-full bg-[#F1C12B] font-semibold text-[#121317] text-lg py-[11px] rounded"
             >
               Sign Up
             </button>
@@ -132,7 +134,7 @@ export default {
           body: JSON.stringify({
             lname,
             mobile,
-            email,
+            email: email.toLowerCase(),
             password,
             fname,
           }),

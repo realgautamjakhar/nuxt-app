@@ -14,16 +14,16 @@
     />
     <div class="flex flex-col justify-center mr-6 mb-6">
       <h2 class="font-bold text-2xl mb-3">Welcome back!</h2>
-      <p class="text-[16px] font-light">
+      <p class="text-[16px]">
         Sign In to find opportunities that match your interests. We have both
         part-time and full-time roles that can be done online and in-person.
       </p>
       <img
         src="../assets/logos/dots.svg"
-        class="h-[3px] self-start my-12"
+        class="h-[3px] self-start my-11"
         alt="dots"
       />
-      <p class="text-[12px] font-light">
+      <p class="text-[12px]">
         Please contact us at
         <span class="font-semibold">+91-9380644532</span> if you need any
         assistance.
