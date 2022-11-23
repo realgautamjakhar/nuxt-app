@@ -35,12 +35,12 @@ const schema = Yup.object().shape({
 <template>
   <div
     v-if="loginSuccess"
-    class="absolute max-h-[64px] top-0 right-0 p-4 m-4 flex gap-3 items-center border-l-4 border-[#039855] rounded-md shadow-md z-20"
+    class="bg-white absolute max-h-[64px] top-0 right-0 p-4 m-4 flex gap-3 items-center border-l-4 border-[#039855] rounded-md shadow-md z-20"
   >
     <img
       src="../assets/logos/circlecheck.svg"
       alt="SuccessFully login"
-      class="max-w-[20px] max-h-[20px]"
+      class="max-w-[20px] max-h-[20px] z-0"
     />
     <h2 class="text-sm">You Signed In successfully</h2>
     <img
@@ -91,6 +91,12 @@ const schema = Yup.object().shape({
           placeholder="Password"
           class="mt-4"
         />
+        <p
+          v-if="invalidPassword"
+          class="text-[14px] text-[#D92D20] font-normal"
+        >
+          {{ error }}
+        </p>
         <p
           class="font-semibold mb-6 text-[#2558E5] self-end hover:cursor-pointer leading-6 mt-1"
         >
