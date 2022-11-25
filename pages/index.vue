@@ -3,7 +3,7 @@ import * as Yup from "yup";
 import { Form } from "vee-validate";
 
 const validateEmail = (email) => {
-  return Yup.string().email().isValidSync(email);
+  return Yup.string().email().isValidSync(email); // return true or false
 };
 
 const validatePhone = (phone) => {
@@ -11,16 +11,16 @@ const validatePhone = (phone) => {
     .integer()
     .positive()
     .test((phone) => {
-      return phone && phone.toString().length == 10 ? true : false;
+      return phone && phone.toString().length == 10 ? true : false; //Phone validation number should be positive / interger / and of 10 digits
     })
-    .isValidSync(phone);
+    .isValidSync(phone); //Return test value (true or false)
 };
 
 const schema = Yup.object().shape({
   email_or_phone: Yup.string()
     .required("Email / Phone is required")
     .test("email_or_phone", "Email / Phone is invalid", (value) => {
-      return validateEmail(value) || validatePhone(parseInt(value ?? "0"));
+      return validateEmail(value) || validatePhone(parseInt(value ?? "0")); //Return a true/false value and depending on them it will show error
     }),
   password: Yup.string()
     .min(8, "Password Must be 8 Character")
