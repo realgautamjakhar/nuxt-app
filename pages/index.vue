@@ -11,11 +11,7 @@ const validatePhone = (phone) => {
     .integer()
     .positive()
     .test((phone) => {
-      return phone &&
-        phone.toString().length >= 8 &&
-        phone.toString().length <= 14
-        ? true
-        : false;
+      return phone && phone.toString().length == 10 ? true : false;
     })
     .isValidSync(phone);
 };

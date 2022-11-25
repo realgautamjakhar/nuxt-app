@@ -1,11 +1,20 @@
 <script setup>
 import { Form } from "vee-validate";
 import * as Yup from "yup";
+
+const phoneRegExp =
+  /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+
 const schema = Yup.object().shape({
   fname: Yup.string().required("This Field is Required"),
   password: Yup.string()
     .min(8, "Password must be at least 8 characters")
     .required("This Field is Required"),
+  email: Yup.string().email("Enter a Valid Email"),
+  mobile: Yup.string()
+    .matches(phoneRegExp, "Phone number is not valid")
+    .min(10, "Enter A valid 10 digit Mobile Number")
+    .max(10, "Enter A valid 10 digit Mobile Number"),
 });
 </script>
 
